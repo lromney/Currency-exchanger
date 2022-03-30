@@ -1,14 +1,9 @@
+import java.util.*;
 public class Main
 {
   public static void main(Sting[] args)
   {
     System.out.println("Hello World");
-    
-    import java.util.*;
-public class CurrencyConverterTest
-{
-   public static void main(String[] args)
-   {   
       Scanner scnr = new Scanner(System.in);
 
       final int selectedCurrencies = 2;
