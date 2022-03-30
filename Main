@@ -3,6 +3,19 @@ public class Main
 {
    public static void main(String[] args)
    {
+      Scanner sc = new Scanner(System.in);
+      
+      do
+      {
+      runMenu();      
+      System.out.println("Would You like to continue? Press 'N' to exit.");
+      }while(!sc.next().equalsIgnoreCase("N"));
+      
+      System.out.println("\nThanks for using our Currency Convertor\nGoodbye");
+   }
+  
+  public static void runMenu()
+  {
       System.out.println("Hello World");
       Scanner scnr = new Scanner(System.in);
    
@@ -10,7 +23,8 @@ public class Main
       String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
       String currency1;
       String currency2;
-      int ammount = -1;
+      int amount = -1;
+      String cont;
         
       System.out.println("Select from the following:");
       System.out.println("Type USD (United States Dollars)");
@@ -23,16 +37,11 @@ public class Main
       System.out.println("Type CAD (Canadian Dollars)");
       System.out.println("Type AUD (Australian Dollars)");
       System.out.println("Type ZAR (South African Rands)");
-      System.out.println("Type AED (Emirati Dirham)");
-   //Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
-      System.out.println("Type AFN (Afghan Afghanis)");
-   //This is the currency used in Afghanistan.    
-      System.out.println("Type D (Denarius)");
-   //Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
-      System.out.println("Type AUR (Aureus)");
-   //Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
-      System.out.println("Type IC (Imperial Credits)");
-   //Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
+      System.out.println("Type AED (Emirati Dirham)");                  //Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
+      System.out.println("Type AFN (Afghan Afghanis)");                 //This is the currency used in Afghanistan.    
+      System.out.println("Type D (Denarius)");                          //Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
+      System.out.println("Type AUR (Aureus)");                          //Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
+      System.out.println("Type IC (Imperial Credits)");                 //Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
       System.out.println("");
      
 
@@ -51,7 +60,7 @@ public class Main
       }
       
 
-      ammount = scnr.nextInt();
+      amount = scnr.nextInt();
 
       do
       {
@@ -60,12 +69,9 @@ public class Main
       }while(!Arrays.asList(currencies).contains(currency2));
       
       System.out.println("Selected Currency : Amount");
-      System.out.println(ammount + " " + currency1 + " is equal to " + "convert(ammount, currency1, currency 2)" + " " + currency2);
+      System.out.println(amount + " " + currency1 + " is equal to " + "convert(amount, currency1, currency 2)" + " " + currency2);
      
    
       System.out.println("");
-         
-   }
-   
-  
+  } 
 }
