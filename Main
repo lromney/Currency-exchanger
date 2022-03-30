@@ -3,5 +3,60 @@ public class Main
   public static void main(Sting[] args)
   {
     System.out.println("Hello World");
-  }
+    
+    import java.util.*;
+public class CurrencyConverterTest
+{
+   public static void main(String[] args)
+   {   
+      Scanner scnr = new Scanner(System.in);
+
+      final int selectedCurrencies = 2;
+      int[] currency1 = new int[selectedCurrencies];
+      int[] currency2 = new int[selectedCurrencies];
+      int i = 0;
+ 
+      System.out.println("Select from the following:");
+      System.out.println("Type USD (United States Dollars)");
+      System.out.println("Type RUB (Russian Rubles)");
+      System.out.println("Type GBP (British Pounds)");
+      System.out.println("Type EUR (European Euros)");
+      System.out.println("Type JPY (Japanese Yen)");
+      System.out.println("Type EGP (Egyptian Pounds)");
+      System.out.println("Type CHF (Swiss Francs)");
+      System.out.println("Type CAD (Canadian Dollars)");
+      System.out.println("Type AUD (Australian Dollars)");
+      System.out.println("Type ZAR (South African Rands)");
+      System.out.println("Type AED (Emirati Dirham)");
+//Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
+      System.out.println("Type AFN (Afghan Afghanis)");
+//This is the currency used in Afghanistan.    
+      System.out.println("Type D (Denarius)");
+//Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
+      System.out.println("Type AUR (Aureus)");
+//Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
+      System.out.println("Type IC (Imperial Credits)");
+//Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
+     
+      for (i = 0; i < selectedCurrencies; ++i) {
+         System.out.println("Enter currency selction " + (i + 1) + " :");
+         currency1[i] = scnr.nextInt();
+         System.out.println("Enter amount of selected currency " + (i + 1) + " :");
+         currency2[i] = scnr.nextInt();
+         System.out.println("");
+
+      }
+
+      System.out.println("Selected Currency : Amount");
+
+      for (i = 0; i < selectedCurrencies; ++i) {
+         System.out.println("Currency " + (i + 1) + ": " + currency1[i] + ", Amount: " + currency2[i]);
+
+      }
+
+      System.out.println("");
+         
+      }
+   
+  
 }
