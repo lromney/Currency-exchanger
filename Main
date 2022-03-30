@@ -1,16 +1,17 @@
 import java.util.*;
 public class Main
 {
-  public static void main(Sting[] args)
-  {
-    System.out.println("Hello World");
+   public static void main(String[] args)
+   {
+      System.out.println("Hello World");
       Scanner scnr = new Scanner(System.in);
-
-      final int selectedCurrencies = 2;
-      int[] currency1 = new int[selectedCurrencies];
-      int[] currency2 = new int[selectedCurrencies];
-      int i = 0;
- 
+   
+      final int numOfCurrencies = 2;
+      String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
+      String currency1;
+      String currency2;
+      int ammount = -1;
+        
       System.out.println("Select from the following:");
       System.out.println("Type USD (United States Dollars)");
       System.out.println("Type RUB (Russian Rubles)");
@@ -23,35 +24,48 @@ public class Main
       System.out.println("Type AUD (Australian Dollars)");
       System.out.println("Type ZAR (South African Rands)");
       System.out.println("Type AED (Emirati Dirham)");
-//Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
+   //Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
       System.out.println("Type AFN (Afghan Afghanis)");
-//This is the currency used in Afghanistan.    
+   //This is the currency used in Afghanistan.    
       System.out.println("Type D (Denarius)");
-//Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
+   //Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
       System.out.println("Type AUR (Aureus)");
-//Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
+   //Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
       System.out.println("Type IC (Imperial Credits)");
-//Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
+   //Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
+      System.out.println("");
      
-      for (i = 0; i < selectedCurrencies; ++i) {
-         System.out.println("Enter currency selction " + (i + 1) + " :");
-         currency1[i] = scnr.nextInt();
-         System.out.println("Enter amount of selected currency " + (i + 1) + " :");
-         currency2[i] = scnr.nextInt();
-         System.out.println("");
 
+      do
+      {
+         System.out.println("Enter first currency selction:");
+         currency1 = scnr.next();
+      }while(!Arrays.asList(currencies).contains(currency1));
+
+
+      System.out.println("Enter amount of selected currency:");
+      while(!scnr.hasNextInt())
+      {
+         System.out.println("Enter amount of selected currency:");
+         scnr.nextInt();
       }
+      
 
+      ammount = scnr.nextInt();
+
+      do
+      {
+         System.out.println("Enter a currency to convert to:");
+         currency2 = scnr.next();
+      }while(!Arrays.asList(currencies).contains(currency2));
+      
       System.out.println("Selected Currency : Amount");
-
-      for (i = 0; i < selectedCurrencies; ++i) {
-         System.out.println("Currency " + (i + 1) + ": " + currency1[i] + ", Amount: " + currency2[i]);
-
-      }
-
+      System.out.println(ammount + " " + currency1 + " is equal to " + "convert(ammount, currency1, currency 2)" + " " + currency2);
+     
+   
       System.out.println("");
          
-      }
+   }
    
   
 }
