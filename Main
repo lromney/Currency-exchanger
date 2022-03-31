@@ -5,6 +5,7 @@ public class Main
    {
       Scanner sc = new Scanner(System.in);
       
+    
       do
       {
       runMenu();      
@@ -12,10 +13,11 @@ public class Main
       }while(!sc.next().equalsIgnoreCase("N"));
       
       System.out.println("\nThanks for using our Currency Convertor\nGoodbye");
+    
    }
   
-  public static void runMenu()
-  {
+   public static void runMenu()
+   {
       System.out.println("Hello World");
       Scanner scnr = new Scanner(System.in);
    
@@ -23,7 +25,7 @@ public class Main
       String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
       String currency1;
       String currency2;
-      int amount = -1;
+      double amount = -1.0;
       String cont;
         
       System.out.println("Select from the following:");
@@ -44,24 +46,24 @@ public class Main
       System.out.println("Type IC (Imperial Credits)");                 //Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
       System.out.println("");
      
-
+   
       do
       {
          System.out.println("Enter first currency selction:");
          currency1 = scnr.next();
       }while(!Arrays.asList(currencies).contains(currency1));
-
-
+   
+   
       System.out.println("Enter amount of selected currency:");
-      while(!scnr.hasNextInt())
+      while(!scnr.hasNextDouble())
       {
          System.out.println("Enter amount of selected currency:");
-         scnr.nextInt();
+         scnr.nextDouble();
       }
       
-
-      amount = scnr.nextInt();
-
+   
+      amount = scnr.nextDouble();
+   
       do
       {
          System.out.println("Enter a currency to convert to:");
@@ -73,5 +75,24 @@ public class Main
      
    
       System.out.println("");
-  } 
+      
+      convert(amount, currency1, currency2);
+   } 
+   public static void convert(double amount, String c1, String c2)
+   {
+      String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
+      
+      double [] values = new double[] {1.00, 0.012, 1.31, 1.19, 0.0082, 0.055, 1.09, 0.80, 0.75, 0.068, 0.27, 0.011, 0.37, 13.72, 4.00};
+               
+      Arrays.asList(currencies).indexOf(c1);
+      Arrays.asList(currencies).indexOf(c2);
+      
+      System.out.println(Arrays.asList(currencies).indexOf(c1));
+      Arrays.asList(currencies).indexOf(c2);
+         if (values[Arrays.asList(currencies).indexOf(c1)] > 1)
+         {
+            amount = c1 * amount;
+            
+         }
+   }
 }
