@@ -40,7 +40,6 @@ public class Main extends JFrame
       String currency1;
       String currency2;
       double amount = -1.0;
-      String cont;
         
       System.out.println("Select from the following:");
       System.out.println("Type USD (United States Dollars)");
@@ -101,8 +100,6 @@ public class Main extends JFrame
       Arrays.asList(currencies).indexOf(c1);
       Arrays.asList(currencies).indexOf(c2);
       
-      //System.out.println(Arrays.asList(currencies).indexOf(c1));
-      //Arrays.asList(currencies).indexOf(c2);
       
     	  amount =  amount * values[Arrays.asList(currencies).indexOf(c1)];
     	  amount = amount / values[Arrays.asList(currencies).indexOf(c2)];
