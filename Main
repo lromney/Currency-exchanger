@@ -1,6 +1,19 @@
 import java.util.*;
-public class Main
+import javax.swing.*;
+import java.awt.*;
+public class Main extends JFrame
 {
+	public Main() {
+		  setTitle("Currency Convertor");
+	      setLayout(new FlowLayout());
+	      setPreferredSize(new Dimension(700, 700));
+	      pack();
+	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      setLocationRelativeTo(null);
+	      setVisible(true);
+	      setResizable(false);
+	}
+	
    public static void main(String[] args)
    {
       Scanner sc = new Scanner(System.in);
@@ -8,6 +21,7 @@ public class Main
     
       do
       {
+      new Main();
       runMenu();      
       System.out.println("Would You like to continue? Press 'N' to exit.");
       }while(!sc.next().equalsIgnoreCase("N"));
@@ -71,7 +85,7 @@ public class Main
       }while(!Arrays.asList(currencies).contains(currency2));
       
       System.out.println("Selected Currency : Amount");
-      System.out.println(amount + " " + currency1 + " is equal to " + "convert(amount, currency1, currency 2)" + " " + currency2);
+      System.out.println(amount + " " + currency1 + " is equal to " + "convert(amount, currency1, currency2)" + " " + currency2);
      
    
       System.out.println("");
@@ -87,12 +101,14 @@ public class Main
       Arrays.asList(currencies).indexOf(c1);
       Arrays.asList(currencies).indexOf(c2);
       
-      System.out.println(Arrays.asList(currencies).indexOf(c1));
-      Arrays.asList(currencies).indexOf(c2);
-         if (values[Arrays.asList(currencies).indexOf(c1)] > 1)
-         {
-            amount = c1 * amount;
-            
-         }
+      //System.out.println(Arrays.asList(currencies).indexOf(c1));
+      //Arrays.asList(currencies).indexOf(c2);
+      
+    	  amount =  amount * values[Arrays.asList(currencies).indexOf(c1)];
+    	  amount = amount / values[Arrays.asList(currencies).indexOf(c2)];
+    	  System.out.println(amount);
+    	  
+    	  
+
    }
 }
