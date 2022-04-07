@@ -63,7 +63,7 @@ public class Main extends JFrame
    
       do
       {
-         System.out.println("Enter first currency selction:");
+         System.out.println("Enter first currency selection:");
          currency1 = scnr.next();
       }while(!Arrays.asList(currencies).contains(currency1));
    
