@@ -1,6 +1,8 @@
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+
+
 public class Main extends JFrame
 {
 	public Main() {
@@ -21,9 +23,9 @@ public class Main extends JFrame
     
       do
       {
-      new Main();
+      //new Main();
       runMenu();      
-      System.out.println("Would You like to continue? Press 'N' to exit.");
+      System.out.println("Would You like to continue? Y/N");
       }while(!sc.next().equalsIgnoreCase("N"));
       
       System.out.println("\nThanks for using our Currency Convertor\nGoodbye");
@@ -34,11 +36,12 @@ public class Main extends JFrame
    {
       System.out.println("Hello World");
       Scanner scnr = new Scanner(System.in);
+      Converter converter1 = new Converter();
    
-      final int numOfCurrencies = 2;
       String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
       String currency1;
       String currency2;
+      String temp;
       double amount = -1.0;
         
       System.out.println("Select from the following:");
@@ -63,49 +66,35 @@ public class Main extends JFrame
       do
       {
          System.out.println("Enter first currency selection:");
-         currency1 = scnr.next();
+         currency1 = scnr.next().toUpperCase();
       }while(!Arrays.asList(currencies).contains(currency1));
    
    
-      System.out.println("Enter amount of selected currency:");
-      while(!scnr.hasNextDouble())
+      do
       {
-         System.out.println("Enter amount of selected currency:");
-         scnr.nextDouble();
-      }
+          System.out.println("Enter amount of selected currency:");
+          temp = scnr.next();
+          if (temp.matches("[0-9]+"))
+        	  amount = Double.parseDouble(temp);
+      }while(amount == -1.0);
       
-   
-      amount = scnr.nextDouble();
+      
+  
    
       do
       {
          System.out.println("Enter a currency to convert to:");
-         currency2 = scnr.next();
+         currency2 = scnr.next().toUpperCase();
       }while(!Arrays.asList(currencies).contains(currency2));
       
+      
       System.out.println("Selected Currency : Amount");
-      System.out.println(amount + " " + currency1 + " is equal to " + "convert(amount, currency1, currency2)" + " " + currency2);
+      System.out.printf("%.2f %s is equal to %.2f %s", amount, currency1, converter1.convert(amount, currency1, currency2), currency2);
      
    
       System.out.println("");
       
-      convert(amount, currency1, currency2);
-   } 
-   public static void convert(double amount, String c1, String c2)
-   {
-      String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
-      
-      double [] values = new double[] {1.00, 0.012, 1.31, 1.19, 0.0082, 0.055, 1.09, 0.80, 0.75, 0.068, 0.27, 0.011, 0.37, 13.72, 4.00};
-               
-      Arrays.asList(currencies).indexOf(c1);
-      Arrays.asList(currencies).indexOf(c2);
-      
-      
-    	  amount =  amount * values[Arrays.asList(currencies).indexOf(c1)];
-    	  amount = amount / values[Arrays.asList(currencies).indexOf(c2)];
-    	  System.out.println(amount);
-    	  
-    	  
 
-   }
+   } 
+   
 }
