@@ -1,100 +1,95 @@
 import java.util.*;
-import javax.swing.*;
-import java.awt.*;
 
 
-public class Main extends JFrame
+public class Main
 {
-	public Main() {
-		  setTitle("Currency Convertor");
-	      setLayout(new FlowLayout());
-	      setPreferredSize(new Dimension(700, 700));
-	      pack();
-	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	      setLocationRelativeTo(null);
-	      setVisible(true);
-	      setResizable(false);
-	}
 	
    public static void main(String[] args)
    {
       Scanner sc = new Scanner(System.in);
       
-    
+      System.out.println("Hello World");
+      
       do
       {
-      //new Main();
-      runMenu();      
+    	  
+      runMenu(sc);      
+      
+      //Testing for exit
       System.out.println("Would You like to continue? Y/N");
       }while(!sc.next().equalsIgnoreCase("N"));
       
+      //Exit Message
       System.out.println("\nThanks for using our Currency Convertor\nGoodbye");
     
    }
   
-   public static void runMenu()
+   public static void runMenu(Scanner scnr)
    {
-      System.out.println("Hello World");
-      Scanner scnr = new Scanner(System.in);
+	  //creating objects and local variables
       Converter converter1 = new Converter();
-   
-      String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
       String currency1;
       String currency2;
       String temp;
       double amount = -1.0;
-        
-      System.out.println("Select from the following:");
-      System.out.println("Type USD (United States Dollars)");
-      System.out.println("Type RUB (Russian Rubles)");
-      System.out.println("Type GBP (British Pounds)");
-      System.out.println("Type EUR (European Euros)");
-      System.out.println("Type JPY (Japanese Yen)");
-      System.out.println("Type EGP (Egyptian Pounds)");
-      System.out.println("Type CHF (Swiss Francs)");
-      System.out.println("Type CAD (Canadian Dollars)");
-      System.out.println("Type AUD (Australian Dollars)");
-      System.out.println("Type ZAR (South African Rands)");
-      System.out.println("Type AED (Emirati Dirham)");                  //Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
-      System.out.println("Type AFN (Afghan Afghanis)");                 //This is the currency used in Afghanistan.    
-      System.out.println("Type D (Denarius)");                          //Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
-      System.out.println("Type AUR (Aureus)");                          //Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
-      System.out.println("Type IC (Imperial Credits)");                 //Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
-      System.out.println("");
-     
-   
+      
+      
+      displayMenu();
+
+      
+      //getting user data for currency conversion
       do
       {
          System.out.println("Enter first currency selection:");
          currency1 = scnr.next().toUpperCase();
-      }while(!Arrays.asList(currencies).contains(currency1));
+      }while(!Arrays.asList(converter1.currencies).contains(currency1));
    
    
       do
       {
           System.out.println("Enter amount of selected currency:");
           temp = scnr.next();
-          if (temp.matches("[0-9]+"))
+          if (temp.matches("[0-9,.]+"))
         	  amount = Double.parseDouble(temp);
       }while(amount == -1.0);
       
-      
-  
-   
+
       do
       {
          System.out.println("Enter a currency to convert to:");
          currency2 = scnr.next().toUpperCase();
-      }while(!Arrays.asList(currencies).contains(currency2));
+      }while(!Arrays.asList(converter1.currencies).contains(currency2));
       
       
-      System.out.println("Selected Currency : Amount");
-      System.out.printf("%.2f %s is equal to %.2f %s", amount, currency1, converter1.convert(amount, currency1, currency2), currency2);
+      //displays the conversion
+      System.out.printf("%.2f %s is equal to %.2f %s%n", amount, currency1, converter1.convert(amount, currency1, currency2), currency2);
      
    
       System.out.println("");
       
 
    } 
+   
+   public static void displayMenu()
+   {
+	   //Outputs all the options
+		System.out.println("\nSelect from the following:");
+		System.out.println("Type USD (United States Dollars)");
+		System.out.println("Type RUB (Russian Rubles)");
+		System.out.println("Type GBP (British Pounds)");
+		System.out.println("Type EUR (European Euros)");
+		System.out.println("Type JPY (Japanese Yen)");
+		System.out.println("Type EGP (Egyptian Pounds)");
+		System.out.println("Type CHF (Swiss Francs)");
+		System.out.println("Type CAD (Canadian Dollars)");
+		System.out.println("Type AUD (Australian Dollars)");
+		System.out.println("Type ZAR (South African Rands)");
+		System.out.println("Type AED (Emirati Dirham)");                  //Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
+		System.out.println("Type AFN (Afghan Afghanis)");                 //This is the currency used in Afghanistan.    
+		System.out.println("Type D (Denarius)");                          //Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
+		System.out.println("Type AUR (Aureus)");                          //Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
+		System.out.println("Type IC (Imperial Credits)");                 //Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
+		System.out.println("");
+   }
    
 }
