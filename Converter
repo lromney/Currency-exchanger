@@ -1,0 +1,25 @@
+import java.util.Arrays;
+
+public class Converter {
+
+	
+	public static String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
+    public static double [] values = new double[] {1.00, 0.012, 1.31, 1.19, 0.0082, 0.055, 1.09, 0.80, 0.75, 0.068, 0.27, 0.011, 0.37, 13.72, 4.00};
+    
+    public double convert(double amount, String c1, String c2)
+    {
+       
+                
+       Arrays.asList(currencies).indexOf(c1);
+       Arrays.asList(currencies).indexOf(c2);
+       
+       
+     	  amount =  amount * values[Arrays.asList(currencies).indexOf(c1)];
+     	  amount = amount / values[Arrays.asList(currencies).indexOf(c2)];
+     	  
+     	  return amount;
+     	  
+     	  
+
+    }
+}
