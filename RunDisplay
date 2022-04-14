@@ -1,0 +1,43 @@
+import java.awt.Color;
+import java.awt.Container;
+import javax.swing.*;
+
+public class RunDisplay {
+
+	JFrame f = new JFrame();
+	JButton button1 = new JButton();
+	JLabel label1 = new JLabel();
+	
+	RunDisplay()
+	{
+		startGUI();	
+		setButton();
+		setWelcome();
+	}
+	
+	public void startGUI()
+	{
+		f.setTitle("Currency Converter");
+		f.setVisible(true);
+		f.setBounds(700, 300, 500, 500);
+		f.setResizable(false);
+		f.getContentPane().setLayout(null);
+		Container c = f.getContentPane();
+		c.setBackground(Color.lightGray);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void setButton()
+	{
+		button1.setText("Next");
+		button1.setBounds(360, 390, 100, 50);
+		f.add(button1);
+	}
+	
+	public void setWelcome()
+	{
+		label1.setText("Welcome");
+		label1.setBounds(230, 50, 100, 30);
+		f.add(label1);
+	}
+}
