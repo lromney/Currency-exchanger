@@ -12,14 +12,18 @@ public class Main
       Scanner sc = new Scanner(System.in);
       Converter converter1 = new Converter();
       
+      
+      
       //Configuring JFrame
-      
-      /*
-      
-      */
-		
-      new RunDisplay();
-      
+      SwingUtilities.invokeLater(new Runnable() 
+      {
+    	  public void run()
+    	  {
+    		  RunDisplay window = new RunDisplay();
+    		  
+    	  }
+      });
+		      
       
       /*
       //Welcome Message
