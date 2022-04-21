@@ -1,16 +1,42 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class RunDisplay implements ActionListener
-{
-
+{	
 	JFrame f = new JFrame();
-	JButton button1 = new JButton();
-	JLabel label1 = new JLabel();
+	JFrame f2 = new JFrame();
+	JButton button1 = new JButton("Next");
+	JButton button2 = new JButton("Guide");
+	JLabel label1 = new JLabel("Welcome");
+	JTextArea guide = new JTextArea(""
+			+ "USD\t(United States Dollars)\n"
+			+ "RUB\t(Russian Rubles)\n"
+			+ "GBP\t(British Pounds)\n"
+			+ "EUR\t(European Euros)\n"
+			+ "JPY\t(Japanese Yen)\n"
+			+ "EGP\t(Egyptian Pounds)\n"
+			+ "CHF\t(Swiss Francs)\n"
+			+ "CAD\t(Canadian Dollars)\n"
+			+ "AUD\t(Australian Dollars)\n"
+			+ "ZAR\t(South African Rands)\n"
+			+ "AED\t(Emirati Dirham)\n"
+			+ "AFN\t(Afghan Afghanis)\n"
+			+ "D\t(Denarius)\n"
+			+ "AUR\t(Aureus)\n"
+			+ "IC\t(Imperial Credits)\n");
 	JLabel label2 = new JLabel();
 	JTextField input1 = new JTextField();
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	JComboBox dropdown1 = new JComboBox(Converter.currencies);
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	JComboBox dropdown2 = new JComboBox(Converter.currencies);
 	Converter converter = new Converter();
 
@@ -18,11 +44,46 @@ public class RunDisplay implements ActionListener
 	RunDisplay()
 	{
 		startGUI();	
-		setButton();
-		setWelcome();
-		setOutput();
-		setInput();
-		setDropdown();
+		setLocations();
+		addComponents();
+		actionEvent();
+	}
+	
+	public void runGuide()
+	{
+		startGuide();	
+		setLocationsGuide();
+		addComponentsGuide();
+		configComponentsGuide();
+	}
+	
+	
+	public void startGuide()
+	{
+		f2.setTitle("Currency Converter");
+		f2.setVisible(true);
+		f2.setSize(280, 320);
+		f2.setLocationRelativeTo(null);
+		f2.setResizable(false);
+		f2.getContentPane().setLayout(null);
+		f2.getContentPane().setBackground(Color.lightGray);
+		f2.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+	}
+	
+	public void setLocationsGuide()
+	{
+		guide.setBounds(10, 10, 240, 260);
+	}
+	
+	public void addComponentsGuide()
+	{
+		f2.add(guide);
+	}
+	
+	public void configComponentsGuide()
+	{
+		guide.setLineWrap(true);
+		guide.setBackground(null);
 	}
 	
 	public void startGUI()
@@ -37,62 +98,60 @@ public class RunDisplay implements ActionListener
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
-	public void setButton()
+	public void setLocations()
 	{
-		button1.setText("Next");
 		button1.setBounds(360, 390, 100, 50);
-		f.add(button1);
-		button1.addActionListener(this);
-	}
-	
-	public void setWelcome()
-	{
-		label1.setText("Welcome");
+		button2.setBounds(200, 390, 100, 50);
 		label1.setBounds(230, 50, 300, 30);
-		f.add(label1);
-	}
-	
-	public void setOutput()
-	{
-		label2.setText("These are lots of words");
 		label2.setBounds(230, 350, 300, 30);
+		dropdown1.setBounds(100, 100, 100, 25);
+		dropdown2.setBounds(100, 200, 100, 25);
+		input1.setBounds(0, 0, 100, 50);
+
+	}
+	
+	public void addComponents()
+	{
+		f.add(label1);
+		f.add(button1);
+		f.add(button2);
 		f.add(label2);
-	}
-	
-	public void setInput()
-	{
-		input1.setSize(100, 50);
-		f.add(input1);
-		
-	}
-	
-	public void setDropdown()
-	{
-		dropdown1.setSize(100, 25);
-		dropdown2.setSize(100, 25);
-		dropdown1.setLocation(100, 100);
-		dropdown2.setLocation(100, 200);
 		f.add(dropdown1);
 		f.add(dropdown2);
+		f.add(input1);
+	}
+	
+	
+	
+	public void actionEvent()
+	{
+		button1.addActionListener(this);
+		button2.addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if (Double.parseDouble(input1.getText()) >= 0)
+		if(e.getSource()==button1)
 		{
-			dispOutput();	  
+			if (Double.parseDouble(input1.getText()) >= 0)
+			{
+				dispOutput();	  
+			}
+			System.out.println("button 1");
 		}
-		System.out.println("action has been performed");
+		
+		if(e.getSource()==button2)
+		{
+			System.out.println("button 2");
+			runGuide();
+		}
 	}
 	
 	public void dispOutput()
 	{
 		double num = converter.convert(Double.parseDouble(input1.getText()), dropdown1.getSelectedIndex(), dropdown2.getSelectedIndex());
 		String words = "this is my num " + num + ".";
-		label2.setText(words);
-		
-
-		
+		label2.setText(words);		
 	}
 }
