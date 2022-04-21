@@ -1,120 +1,32 @@
-import java.util.*;
-import javax.swing.*;
-import java.awt.*;
+import java.text.NumberFormat;
+
+import javax.swing.SwingUtilities;
+import javax.swing.text.NumberFormatter;
 
 
 public class Main
 {
 	
+	
+	
    public static void main(String[] args)
-   {
-	  //Object Creation
-      Scanner sc = new Scanner(System.in);
-      Converter converter1 = new Converter();
-      
-      
-      
+   {  
+	   NumberFormat longFormat = NumberFormat.getIntegerInstance();
+
+	   NumberFormatter numberFormatter = new NumberFormatter(longFormat);
+	   numberFormatter.setValueClass(Long.class); //optional, ensures you will always get a long value
+	   numberFormatter.setAllowsInvalid(false); //this is the key!!
+	   numberFormatter.setMinimum(0l); //Optional
+	   
+	   
       //Configuring JFrame
       SwingUtilities.invokeLater(new Runnable() 
       {
     	  public void run()
     	  {
-    		  RunDisplay window = new RunDisplay();
+    		  new RunDisplay();
     		  
     	  }
       });
-		      
-      
-      /*
-      //Welcome Message
-      System.out.println("Hello World");
-      
-      
-      
-      //Menu for conversion
-      do
-      {
-    	  runMenu(sc, converter1);      
- 
-    	  //Testing for exit
-    	  System.out.println("Would You like to continue? Y/N");
-      }while(!sc.next().equalsIgnoreCase("N"));
-      
-      //Exit Message
-      System.out.println("\nThanks for using our Currency Convertor\nGoodbye");
-    */
    }
-  
-   public static void runMenu(Scanner scnr, Converter converter1)
-   {
-	  // creating local variables
-      String currency1;
-      String currency2;
-      String temp;
-      double amount = -1.0;
-      
-      
-      displayOptions();
-
-      
-      //getting user data for currency conversion
-      
-      //first currency
-      do
-      {
-         System.out.println("Enter first currency selection:");
-         currency1 = scnr.next().toUpperCase();
-      }while(!Arrays.asList(converter1.currencies).contains(currency1));
-   
-   
-      //ammount of first currency
-      do
-      {
-          System.out.println("Enter amount of selected currency:");
-          temp = scnr.next();
-          if (temp.matches("[0-9,.]+"))
-        	  amount = Double.parseDouble(temp);
-      }while(amount == -1.0);
-      
-
-      
-      //second currency
-      do
-      {
-         System.out.println("Enter a currency to convert to:");
-         currency2 = scnr.next().toUpperCase();
-      }while(!Arrays.asList(converter1.currencies).contains(currency2));
-      
-      
-      //displays the conversion
-      System.out.printf("%.2f %s is equal to %.2f %s%n", amount, currency1, converter1.convert(amount, currency1, currency2), currency2);
-     
-   
-      System.out.println("");
-      
-
-   } 
-   
-   public static void displayOptions()
-   {
-	   //Outputs all the options
-		System.out.println("\nSelect from the following:");
-		System.out.println("USD (United States Dollars)");
-		System.out.println("RUB (Russian Rubles)");
-		System.out.println("GBP (British Pounds)");
-		System.out.println("EUR (European Euros)");
-		System.out.println("JPY (Japanese Yen)");
-		System.out.println("EGP (Egyptian Pounds)");
-		System.out.println("CHF (Swiss Francs)");
-		System.out.println("CAD (Canadian Dollars)");
-		System.out.println("AUD (Australian Dollars)");
-		System.out.println("ZAR (South African Rands)");
-		System.out.println("AED (Emirati Dirham)");                  //Emirati Dirham is the offical currency of the UAE (United Arab Emirates)
-		System.out.println("AFN (Afghan Afghanis)");                 //This is the currency used in Afghanistan.    
-		System.out.println("D (Denarius)");                          //Denarius (di-neh-ree-uhs) was the standard silver coin used by the Roman Empire. *One D is worth $0.37 USD.*
-		System.out.println("AUR (Aureus)");                          //Aureus (aw-ree-uhs) was coin of pure gold used by the acient Roman Empire, its worth was equivilent to 25 silver Denarius. *One AUR is worth $13.72 USD.*
-		System.out.println("IC (Imperial Credits)");                 //Imperial Credits are the coveted currency in Star Wars. *Sources say one Imperial Credit is worth $4.00 USD.*
-		System.out.println("");
-   }
-   
 }
