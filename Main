@@ -11,13 +11,6 @@ public class Main
 	
    public static void main(String[] args)
    {  
-	   NumberFormat longFormat = NumberFormat.getIntegerInstance();
-
-	   NumberFormatter numberFormatter = new NumberFormatter(longFormat);
-	   numberFormatter.setValueClass(Long.class); //optional, ensures you will always get a long value
-	   numberFormatter.setAllowsInvalid(false); //this is the key!!
-	   numberFormatter.setMinimum(0l); //Optional
-	   
 	   
       //Configuring JFrame
       SwingUtilities.invokeLater(new Runnable() 
