@@ -83,6 +83,7 @@ public class RunDisplay implements ActionListener
 	public void configComponentsGuide()
 	{
 		guide.setLineWrap(true);
+		guide.setEditable(false);
 		guide.setBackground(null);
 	}
 	
