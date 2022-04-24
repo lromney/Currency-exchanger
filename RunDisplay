@@ -15,7 +15,11 @@ public class RunDisplay implements ActionListener
 	JFrame f2 = new JFrame();
 	JButton button1 = new JButton("Next");
 	JButton button2 = new JButton("Guide");
-	JLabel label1 = new JLabel("Welcome");
+	JLabel label1 = new JLabel("Welcome to Currency Converter 1.0");
+   JLabel label3 = new JLabel("I want convert...");
+   JLabel label4 = new JLabel("Amount:");
+   JLabel label5 = new JLabel("Type:");
+   JLabel label6 = new JLabel("To...");
 	JTextArea guide = new JTextArea(""
 			+ "USD\t(United States Dollars)\n"
 			+ "RUB\t(Russian Rubles)\n"
@@ -101,19 +105,27 @@ public class RunDisplay implements ActionListener
 	
 	public void setLocations()
 	{
-		button1.setBounds(360, 390, 100, 50);
-		button2.setBounds(200, 390, 100, 50);
-		label1.setBounds(230, 50, 300, 30);
+		button1.setBounds(250, 390, 85, 40);
+		button2.setBounds(150, 390, 85, 40);
+		label1.setBounds(150, 30, 300, 30);
 		label2.setBounds(230, 350, 300, 30);
-		dropdown1.setBounds(100, 100, 100, 25);
-		dropdown2.setBounds(100, 200, 100, 25);
-		input1.setBounds(0, 0, 100, 50);
+      label3.setBounds(200, 80, 300, 30);
+      label4.setBounds(75, 125, 300, 30);
+      label5.setBounds(240, 125, 300, 30);
+      label6.setBounds(225, 170, 300, 30);
+		dropdown1.setBounds(275, 130, 100, 25);
+		dropdown2.setBounds(190, 220, 100, 25);
+		input1.setBounds(125, 130, 100, 25);
 
 	}
 	
 	public void addComponents()
 	{
 		f.add(label1);
+      f.add(label6);
+      f.add(label5);
+      f.add(label4);
+      f.add(label3);
 		f.add(button1);
 		f.add(button2);
 		f.add(label2);
@@ -152,7 +164,7 @@ public class RunDisplay implements ActionListener
 	public void dispOutput()
 	{
 		double num = converter.convert(Double.parseDouble(input1.getText()), dropdown1.getSelectedIndex(), dropdown2.getSelectedIndex());
-		String words = "this is my num " + num + ".";
+		String words = "You have " + num + ".";
 		label2.setText(words);		
 	}
 }
