@@ -108,7 +108,7 @@ public class RunDisplay implements ActionListener
 		button1.setBounds(250, 390, 85, 40);
 		button2.setBounds(150, 390, 85, 40);
 		label1.setBounds(150, 30, 300, 30);
-		label2.setBounds(230, 350, 300, 30);
+		label2.setBounds(175, 300, 300, 30);
       label3.setBounds(200, 80, 300, 30);
       label4.setBounds(75, 125, 300, 30);
       label5.setBounds(240, 125, 300, 30);
