@@ -14,7 +14,7 @@ public class RunDisplay implements ActionListener
 {	
 	JFrame f = new JFrame();
 	JFrame f2 = new JFrame();
-	JButton button1 = new JButton("Next");
+	JButton button1 = new JButton("Convert");
 	JButton button2 = new JButton("Guide");
 	JLabel label1 = new JLabel("Welcome to Currency Converter 1.0");
 	JLabel label2 = new JLabel();
