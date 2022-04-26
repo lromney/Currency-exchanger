@@ -1,14 +1,32 @@
-import java.util.Arrays;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 
 public class Converter {
 
 	//List of currency abbreviations
-	public static String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
+	final public static String[] currencies = new String[] {"USD", "RUB", "GBP", "EUR", "JPY", "EGP", "CHF", "CAD", "AUD", "ZAR", "AED", "AFN", "D", "AUR", "IC"};
 	//list of conversion rates (how much 1 of each unit is worth in USD)
-	public static double [] values = new double[] {1.00, 0.012, 1.31, 1.19, 0.0082, 0.055, 1.09, 0.80, 0.75, 0.068, 0.27, 0.011, 0.37, 13.72, 4.00};
+	final public static double [] values = new double[] {1.00, 0.012, 1.31, 1.19, 0.0082, 0.055, 1.09, 0.80, 0.75, 0.068, 0.27, 0.011, 0.37, 13.72, 4.00};
     
-    public double convert(double amount, int c1, int c2)
+	
+	public String getCurrencies(int num)
+	{
+		return currencies[num];
+	}
+	
+    public String convert(double amount, int c1, int c2)
     {
-     	  return amount * values[c1] / values[c2];
+    	BigDecimal bd = new BigDecimal(amount * values[c1] / values[c2]);
+    	//System.out.println(bd);
+     	  return round(bd);
     }
+    
+    private String round(BigDecimal num)
+    {
+    	DecimalFormat df = new DecimalFormat("###,###.00");
+    	return df.format(num);
+  
+    }
+    
 }
